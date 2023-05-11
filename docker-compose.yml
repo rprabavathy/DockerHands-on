@@ -1,0 +1,22 @@
+version: '2'
+services:
+    web:
+        image: koenkk/docker-compose-exercise-webapp
+        restart: always
+        depends_on:
+            - database
+        ports:
+            - 8080:80
+        networks:
+            - dcompex
+    
+    database:
+        image: koenkk/docker-compose-exercise-database
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=movie123
+        networks:
+            - dcompex
+networks:
+    dcompex:
+        name: docker-compose-exercise  
